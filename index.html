@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>Weather App</h1>
+            <p class="subtitle">Get real-time weather information</p>
+        </header>
+
+        <main class="main">
+            <div class="search-section">
+                <form class="search-form" id="searchForm">
+                    <input type="text" id="cityInput" placeholder="Enter city name..." aria-label="City name">
+                    <button type="submit" class="btn-search" aria-label="Search weather">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <button type="button" class="btn-location" id="locationBtn" aria-label="Use current location">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    Use My Location
+                </button>
+                
+                <div class="tamilnadu-cities">
+                    <p class="cities-label">Quick Search - Tamil Nadu Cities:</p>
+                    <div class="city-buttons">
+                        <button type="button" class="city-btn" data-city="Chennai" data-lat="13.0827" data-lon="80.2707">Chennai</button>
+                        <button type="button" class="city-btn" data-city="Coimbatore" data-lat="11.0168" data-lon="76.9558">Coimbatore</button>
+                        <button type="button" class="city-btn" data-city="Madurai" data-lat="9.9252" data-lon="78.1198">Madurai</button>
+                        <button type="button" class="city-btn" data-city="Salem" data-lat="11.6643" data-lon="78.1460">Salem</button>
+                        <button type="button" class="city-btn" data-city="Tiruchirappalli" data-lat="10.7905" data-lon="78.7047">Trichy</button>
+                        <button type="button" class="city-btn" data-city="Tirunelveli" data-lat="8.7139" data-lon="77.7567">Tirunelveli</button>
+                        <button type="button" class="city-btn" data-city="Erode" data-lat="11.3410" data-lon="77.7172">Erode</button>
+                        <button type="button" class="city-btn" data-city="Vellore" data-lat="12.9166" data-lon="79.1325">Vellore</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weather-card" id="weatherCard" hidden>
+                <div class="weather-header">
+                    <h2 class="city-name" id="cityName">--</h2>
+                    <p class="date" id="date">--</p>
+                </div>
+
+                <div class="weather-main">
+                    <div class="temperature">
+                        <span class="temp-value" id="temperature">--</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <div class="weather-icon" id="weatherIcon">
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
+                </div>
+
+                <div class="weather-description" id="description">--</div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <i class="fa-solid fa-temperature-half"></i>
+                        <span class="detail-label">Feels like</span>
+                        <span class="detail-value" id="feelsLike">--°C</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-solid fa-droplet"></i>
+                        <span class="detail-label">Humidity</span>
+                        <span class="detail-value" id="humidity">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-solid fa-wind"></i>
+                        <span class="detail-label">Wind Speed</span>
+                        <span class="detail-value" id="windSpeed">-- km/h</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-solid fa-gauge"></i>
+                        <span class="detail-label">Pressure</span>
+                        <span class="detail-value" id="pressure">-- hPa</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-solid fa-eye"></i>
+                        <span class="detail-label">Visibility</span>
+                        <span class="detail-value" id="visibility">-- km</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <span class="detail-label">Sunrise</span>
+                        <span class="detail-value" id="sunrise">--:--</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-solid fa-arrow-down"></i>
+                        <span class="detail-label">Sunset</span>
+                        <span class="detail-value" id="sunset">--:--</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-solid fa-thermometer-half"></i>
+                        <span class="detail-label">Min / Max</span>
+                        <span class="detail-value" id="tempRange">--° / --°</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage" hidden>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p id="errorText">Unable to fetch weather data. Please try again.</p>
+            </div>
+
+            <div class="loading" id="loading" hidden>
+                <div class="spinner"></div>
+                <p>Loading weather data...</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Weather data provided by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo API</a> (Free, No API Key Required)</p>
+        </footer>
+    </div>
+
+    <script src="weather.js"></script>
+</body>
+</html>
